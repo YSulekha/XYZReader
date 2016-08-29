@@ -11,12 +11,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/Theme.Bacon">
+        android:label="XYZReader"
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".ui.ArticleListActivity"
-            android:label="@string/app_name">
+            android:label="XYZReader">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,7 +25,8 @@
 
         <activity
             android:name=".ui.ArticleDetailActivity"
-            android:parentActivityName=".ui.ArticleListActivity">
+            android:parentActivityName=".ui.ArticleListActivity"
+            android:theme="@style/AppTheme.Detail">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

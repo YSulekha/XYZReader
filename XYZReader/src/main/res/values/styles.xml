@@ -17,12 +17,25 @@
 
 <resources>
 
-    <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">#00796B</item>
+        <item name="colorPrimary">#009688</item>
+        <item name="colorAccent">#64FFDA</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
+
 
     </style>
+    <style name="AppTheme" parent="AppTheme.Base"></style>
 
-    <style name="Theme.Bacon.Detail">
+    <style name="AppTheme.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+
+    <!-- main activity action bar styles -->
+    <style name="ActionBar.Solid.Sunshine.NoTitle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="displayOptions">useLogo|showHome</item>
     </style>
 
 </resources>
