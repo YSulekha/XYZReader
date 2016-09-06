@@ -291,7 +291,7 @@
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="fab_elevation">2dp</dimen>
-    <dimen name="fab_margin">24dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -380,6 +380,7 @@
     <string name="action_refresh">Refresh</string>
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
+    <string name="anim_image">Image Animation</string>
     <string name="app_name">XYZ Reader</string>
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.2.1/res/values/values.xml -->
     <eat-comment/>
@@ -412,12 +413,19 @@
     </style>
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppTheme" parent="AppTheme.Base"/>
+    <style name="AppTheme" parent="AppTheme.Base">
+
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowTransitionBackgroundFadeDuration">1000</item>
+    </style>
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimaryDark">#00796B</item>
         <item name="colorPrimary">#009688</item>
         <item name="colorAccent">#64FFDA</item>
         <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
+
 
 
     </style>

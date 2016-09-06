@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.transition.Slide;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class ArticleDetailActivity extends ActionBarActivity
     private MyPagerAdapter mPagerAdapter;
     private View mUpButtonContainer;
     private View mUpButton;
+    private static final String EXTRA_START_POSITION = "extra_start_position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class ArticleDetailActivity extends ActionBarActivity
         setContentView(R.layout.activity_article_detail);
 
         getLoaderManager().initLoader(0, null, this);
+        postponeEnterTransition();
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -105,8 +108,18 @@ public class ArticleDetailActivity extends ActionBarActivity
                 mSelectedItemId = mStartId;
             }
         }
+       // setupWindowAnimations();
     }
+    private void setupWindowAnimations() {
+     /*   Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);*/
 
+       Slide slide = new Slide();
+        slide.setDuration(1000);
+       // getWindow().setReturnTransition(slide);
+        getWindow().setEnterTransition(slide);
+    }
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return ArticleLoader.newAllArticlesInstance(this);
@@ -131,6 +144,7 @@ public class ArticleDetailActivity extends ActionBarActivity
             }
             mStartId = 0;
         }
+
     }
 
     @Override

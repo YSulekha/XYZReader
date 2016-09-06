@@ -9,4 +9,6 @@
 
     <string name="up">Up</string>
 
+    <string name = "anim_image">Image Animation</string>
+
 </resources>
