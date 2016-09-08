@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:contentScrim="?attr/colorPrimary"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -48,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
             </android.support.v7.widget.Toolbar>
@@ -101,18 +99,18 @@
                         <TextView
                             android:id="@+id/article_title"
                             style="?android:attr/textAppearanceLarge"
+                            android:textAppearance = "@style/TextAppearance.AppCompat.Title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-condensed"
-                            android:lineSpacingMultiplier="0.9"
                             android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                             android:textColor="#fff"
-                            android:textSize="@dimen/detail_title_text_size"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/article_byline"
                             style="?android:attr/textAppearanceSmall"
+                            android:textAppearance = "@style/TextAppearance.AppCompat.Subhead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#8fff" />
@@ -125,11 +123,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
                         android:layout_marginRight="@dimen/detail_inner_horiz_margin"
+                        android:textAppearance = "@style/TextAppearance.AppCompat.Body1"
                         android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-                        android:paddingBottom="@dimen/detail_body_bottom_margin"
+                        android:paddingBottom="16dp"
                         android:textColor="#727272"
                         android:textColorLink="@color/theme_accent"
-                        android:textSize="@dimen/detail_body_text_size" />
+                         />
 
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
             </com.example.xyzreader.ui.ObservableScrollView>
@@ -149,7 +148,8 @@
         app:fabSize="normal"
         app:elevation="6dp"
         app:borderWidth="0dp"
-        app:pressedTranslationZ="12dp"
+        android:stateListAnimator="@anim/fab_state_list_anim"
+        android:contentDescription="@string/action_share"
         />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -28,15 +28,16 @@
     </style>
     <style name="AppTheme" parent="AppTheme.Base">
 
-        <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+       <item name="android:windowContentTransitions">true</item>
+      <!--  <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
-        <item name="android:windowTransitionBackgroundFadeDuration">1000</item>
+        <item name="android:windowTransitionBackgroundFadeDuration">1000</item> -->
     </style>
 
     <style name="AppTheme.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
     </style>
 
 

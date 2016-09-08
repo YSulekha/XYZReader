@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
@@ -48,6 +49,7 @@ public class ArticleDetailFragment extends Fragment implements
     private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
+    private CollapsingToolbarLayout mCollapsing;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -125,7 +127,7 @@ public class ArticleDetailFragment extends Fragment implements
                 updateStatusBar();
             }
         });
-
+        mCollapsing = (CollapsingToolbarLayout)mRootView.findViewById(R.id.collapsingbar);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoView.setTransitionName(getString(R.string.anim_image) + mItemId);
         Log.v("SharedView",getString(R.string.anim_image) + mItemId);
@@ -197,8 +199,9 @@ public class ArticleDetailFragment extends Fragment implements
 
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
-        bylineView.setMovementMethod(new LinkMovementMethod());
+     //   bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+        bodyView.setMovementMethod(new LinkMovementMethod());
         bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
@@ -215,6 +218,7 @@ public class ArticleDetailFragment extends Fragment implements
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
+            Log.v("Body Text",mCursor.getString(ArticleLoader.Query.BODY));
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -227,6 +231,9 @@ public class ArticleDetailFragment extends Fragment implements
                                 Log.v("SharedViewBind", mPhotoView.getTransitionName());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
+                                mCollapsing.setContentScrimColor(mMutedColor);
+                                mCollapsing.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+                                mCollapsing.setStatusBarScrimColor(mMutedColor);
                                 // mRootView.findViewById(R.id.toolbar).setBackgroundColor(mMutedColor);
 
                             }

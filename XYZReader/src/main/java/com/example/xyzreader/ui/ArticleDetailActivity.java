@@ -51,7 +51,6 @@ public class ArticleDetailActivity extends ActionBarActivity
         setContentView(R.layout.activity_article_detail);
 
         getLoaderManager().initLoader(0, null, this);
-        postponeEnterTransition();
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -108,7 +107,9 @@ public class ArticleDetailActivity extends ActionBarActivity
                 mSelectedItemId = mStartId;
             }
         }
-       // setupWindowAnimations();
+        postponeEnterTransition();
+
+        // setupWindowAnimations();
     }
     private void setupWindowAnimations() {
      /*   Fade fade = new Fade();

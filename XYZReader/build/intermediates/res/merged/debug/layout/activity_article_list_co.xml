@@ -19,7 +19,7 @@
             android:background="?attr/colorPrimary"/>
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="@dimen/toolbar_size"
             android:src="@drawable/logo"
             android:paddingLeft="@dimen/key_lines"
             android:contentDescription="@string/app_name" />
@@ -37,10 +37,10 @@
             android:scrollbarStyle="outsideOverlay"
             android:background="#B2DFDB"
             android:scrollbars="vertical"
-            android:paddingLeft="@dimen/key_lines"
-            android:paddingRight="@dimen/key_lines"
-            android:paddingBottom="28dp"
-
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
             />
     </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.design.widget.CoordinatorLayout>
