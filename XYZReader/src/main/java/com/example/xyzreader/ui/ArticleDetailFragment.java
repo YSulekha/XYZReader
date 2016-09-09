@@ -108,6 +108,17 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail_co, container, false);
+     /*   Toolbar toolbar = (Toolbar)mRootView.findViewById(R.id.toolbar);
+        ((ActionBarActivity) getActivity()).setSupportActionBar(toolbar);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });*/
+
         mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
                 mRootView.findViewById(R.id.draw_insets_frame_layout);
         mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
@@ -130,7 +141,7 @@ public class ArticleDetailFragment extends Fragment implements
         mCollapsing = (CollapsingToolbarLayout)mRootView.findViewById(R.id.collapsingbar);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoView.setTransitionName(getString(R.string.anim_image) + mItemId);
-        Log.v("SharedView",getString(R.string.anim_image) + mItemId);
+        Log.v("SharedView", getString(R.string.anim_image) + mItemId);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
@@ -148,9 +159,11 @@ public class ArticleDetailFragment extends Fragment implements
 
         bindViews();
         updateStatusBar();
-
+   //     getActivity().getWindow().setStatusBarColor(mMutedColor);
         return mRootView;
     }
+
+
     private void scheduleStartPostponedTransition(final View sharedElement) {
         sharedElement.getViewTreeObserver().addOnPreDrawListener(
                 new ViewTreeObserver.OnPreDrawListener() {
@@ -176,6 +189,7 @@ public class ArticleDetailFragment extends Fragment implements
         }
         mStatusBarColorDrawable.setColor(color);
         mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
+        getActivity().getWindow().setStatusBarColor(mMutedColor);
     }
 
     static float progress(float v, float min, float max) {
@@ -218,7 +232,8 @@ public class ArticleDetailFragment extends Fragment implements
                             + mCursor.getString(ArticleLoader.Query.AUTHOR)
                             + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
-            Log.v("Body Text",mCursor.getString(ArticleLoader.Query.BODY));
+            Log.v("Body Text",mCursor.getString(ArticleLoader.Query.BODY)+bodyView.toString()+bodyView.getText());
+            Log.v("TextView",bodyView.toString());
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -232,8 +247,10 @@ public class ArticleDetailFragment extends Fragment implements
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
                                 mCollapsing.setContentScrimColor(mMutedColor);
-                                mCollapsing.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+                             //   mCollapsing.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
                                 mCollapsing.setStatusBarScrimColor(mMutedColor);
+                            //    updateStatusBar();
+                           //     getActivity().getWindow().setStatusBarColor(mMutedColor);
                                 // mRootView.findViewById(R.id.toolbar).setBackgroundColor(mMutedColor);
 
                             }

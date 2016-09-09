@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
-            android:background="#B2DFDB"
+            android:background="#FFFF"
             android:scrollbars="vertical"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"

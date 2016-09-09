@@ -18,9 +18,9 @@
 <resources>
 
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">#00796B</item>
-        <item name="colorPrimary">#009688</item>
-        <item name="colorAccent">#64FFDA</item>
+        <item name="colorPrimaryDark">#6A1B9A</item>
+        <item name="colorPrimary">#8E24AA</item>
+        <item name="colorAccent">#FF6D00</item>
         <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
 
 
@@ -38,6 +38,14 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
+
+
+
+    </style>
+
+    <style name="AppTheme.TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
     </style>
 
 

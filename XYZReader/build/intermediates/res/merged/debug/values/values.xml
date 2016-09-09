@@ -426,9 +426,9 @@
         <item name="android:windowTransitionBackgroundFadeDuration">1000</item> -->
     </style>
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">#00796B</item>
-        <item name="colorPrimary">#009688</item>
-        <item name="colorAccent">#64FFDA</item>
+        <item name="colorPrimaryDark">#6A1B9A</item>
+        <item name="colorPrimary">#8E24AA</item>
+        <item name="colorAccent">#FF6D00</item>
         <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
 
 
@@ -438,6 +438,13 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
+
+
+
+    </style>
+    <style name="AppTheme.TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
     </style>
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/res/values/values.xml -->
     <eat-comment/>
