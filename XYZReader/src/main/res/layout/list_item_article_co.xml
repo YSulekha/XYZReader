@@ -36,8 +36,9 @@
         android:padding="4dp"
         android:ellipsize="end"
         android:maxLines="4"
+
         android:textAppearance = "@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
-        android:textColor="#727272"
+        android:textColor="#9C27B0"
         />
 
     <TextView

@@ -8,5 +8,7 @@
     <dimen name="fab_press_translation_z">12dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name ="toolbar_size">64dp</dimen>
+    <dimen name = "recycler_view_padding_side">12dp</dimen>
+    <dimen name="recycler_view_padding_up">8dp</dimen>
 
 </resources>

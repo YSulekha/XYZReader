@@ -18,29 +18,24 @@
 <resources>
 
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">#6A1B9A</item>
-        <item name="colorPrimary">#8E24AA</item>
-        <item name="colorAccent">#FF6D00</item>
+        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
+        <item name="colorPrimary">@color/theme_primary</item>
+        <item name="colorAccent">@color/theme_accent</item>
         <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
-
-
-
     </style>
+
     <style name="AppTheme" parent="AppTheme.Base">
 
-       <item name="android:windowContentTransitions">true</item>
-      <!--  <item name="android:windowAllowEnterTransitionOverlap">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap">true</item>
-        <item name="android:windowTransitionBackgroundFadeDuration">1000</item> -->
+        <item name="android:windowContentTransitions">true</item>
+        <!--  <item name="android:windowAllowEnterTransitionOverlap">true</item>
+          <item name="android:windowAllowReturnTransitionOverlap">true</item>
+          <item name="android:windowTransitionBackgroundFadeDuration">1000</item> -->
     </style>
 
-    <style name="AppTheme.Detail">
+    <style name="AppTheme.Detail" parent="AppTheme.Base">
+        <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-
-
-
-
     </style>
 
     <style name="AppTheme.TextAppearance">

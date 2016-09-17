@@ -18,6 +18,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -49,6 +50,7 @@ public class ArticleListActivity extends ActionBarActivity implements
     private Bundle mReenterState;
     private static final String EXTRA_START_POSITION = "extra_start_position";
     private static final String EXTRA_CURRENT_POSITION = "extra_current_position";
+
 
 
     private SharedElementCallback callback = new SharedElementCallback() {
@@ -202,20 +204,25 @@ public class ArticleListActivity extends ActionBarActivity implements
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getLayoutInflater().inflate(R.layout.list_item_article, parent, false);
-            final ImageView sharedView = (ImageView)view.findViewById(R.id.thumbnail);
+            final View sharedView = (ImageView)view.findViewById(R.id.thumbnail);
+            final View sharedTitleView = (TextView)view.findViewById(R.id.article_title);
             final ViewHolder vh = new ViewHolder(view);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                  //   ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this);
                     sharedView.setTransitionName(getString(R.string.anim_image)+getItemId(vh.getAdapterPosition()));
+                    sharedTitleView.setTransitionName("Text Animation"+getItemId(vh.getAdapterPosition()));
+                    Pair<View, String> pair1 = Pair.create(sharedView, sharedView.getTransitionName());
+                    Pair<View, String> pair2 = Pair.create(sharedTitleView, sharedTitleView.getTransitionName());
                     String transitionName = getString(R.string.anim_image)+getItemId(vh.getAdapterPosition());
                     Log.v("SharedViewD",transitionName);
 
-                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this, sharedView, sharedView.getTransitionName());
-                    Intent intent = new Intent();
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),transitionActivityOptions.toBundle());
+                    ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this, pair1,pair2);
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
+                    intent.putExtra(EXTRA_START_POSITION,vh.getAdapterPosition());
+                    startActivity(intent,transitionActivityOptions.toBundle());
                 }
             });
             return vh;
@@ -235,7 +242,11 @@ public class ArticleListActivity extends ActionBarActivity implements
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
-            holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+           float aspect =  mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO);
+            if(aspect > 1){
+                aspect = 0.8f;
+            }
+            holder.thumbnailView.setAspectRatio(aspect);
         }
 
         @Override
@@ -246,14 +257,14 @@ public class ArticleListActivity extends ActionBarActivity implements
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
        public DynamicHeightNetworkImageView thumbnailView;
-     //  public NetworkImageView thumbnailView;
+   //    public NetworkImageView thumbnailView;
         public TextView titleView;
        // public TextView subtitleView;
 
         public ViewHolder(View view) {
             super(view);
             thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
-        //    thumbnailView = (NetworkImageView) view.findViewById(R.id.thumbnail);
+         //   thumbnailView = (NetworkImageView) view.findViewById(R.id.thumbnail);
             titleView = (TextView) view.findViewById(R.id.article_title);
          //   subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
         }

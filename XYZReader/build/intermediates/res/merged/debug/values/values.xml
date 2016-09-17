@@ -426,18 +426,19 @@
         <item name="android:windowTransitionBackgroundFadeDuration">1000</item> -->
     </style>
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">#6A1B9A</item>
-        <item name="colorPrimary">#8E24AA</item>
+        <item name="colorPrimaryDark">#D32F2F</item>
+        <item name="colorPrimary">#F44336</item>
         <item name="colorAccent">#FF6D00</item>
         <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
 
 
 
+
     </style>
-    <style name="AppTheme.Detail">
+    <style name="AppTheme.Detail" parent="AppTheme.Base">
+        <item name="actionBarStyle">@style/ActionBar.Solid.Sunshine.NoTitle</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-
 
 
 
