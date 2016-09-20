@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/main_content">
+    android:layout_height="match_parent">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:contentInsetStart="0dp"
-        app:contentInsetLeft="0dp">
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"/>
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/toolbar_size"
-            android:src="@drawable/logo"
+            android:contentDescription="@string/app_name"
             android:paddingLeft="@dimen/key_lines"
-            android:contentDescription="@string/app_name" />
+            android:src="@drawable/logo" />
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbarStyle="outsideOverlay"
             android:background="#FFFF"
-            android:scrollbars="vertical"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            />
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/recycler_view_padding_up"
+            android:paddingLeft="@dimen/recycler_view_padding_side"
+            android:paddingRight="@dimen/recycler_view_padding_side"
+            android:paddingTop="@dimen/recycler_view_padding_up"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical" />
     </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.design.widget.CoordinatorLayout>
 <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/src/main/res/layout/activity_article_list_co.xml -->

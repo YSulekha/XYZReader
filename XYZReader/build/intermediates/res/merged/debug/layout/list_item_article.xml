@@ -2,10 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_margin = "@dimen/keyline_margin"
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="#fff"
@@ -21,7 +18,6 @@
         android:background="#F3E5F5">
     <!--    android:orientation="vertical"-->
 
-
         <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
@@ -29,14 +25,12 @@
             android:layout_width="match_parent"
             android:background="@color/photo_placeholder"
             android:adjustViewBounds="true"
-            android:layout_height="0dp"
-
-           />
+            android:layout_height="0dp" />
         <TextView
             android:id="@+id/article_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:padding="@dimen/keyline_margin"
             android:ellipsize="end"
             android:fontFamily="sans-serif"
             android:maxLines="4"

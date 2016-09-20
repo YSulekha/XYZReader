@@ -15,14 +15,11 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.app.SharedElementCallback;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.transition.Slide;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowInsets;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.xyzreader.R;
@@ -94,9 +91,9 @@ public class ArticleDetailActivity extends ActionBarActivity
 
         }*/
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow(); // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+       //     Window w = getWindow(); // in Activity's onCreate() for instance
+     //       w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
      //       getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
          //          getWindow().setNavigationBarColor(getResources().getColor(R.color.theme_primary));
@@ -107,7 +104,7 @@ public class ArticleDetailActivity extends ActionBarActivity
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);*/
           //  getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+      //  }
      /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             getWindow().setNavigationBarColor(getResources().getColor(R.color.theme_primary));
@@ -127,6 +124,7 @@ public class ArticleDetailActivity extends ActionBarActivity
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
+
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(mCurrentPosition);
        mPager.setPageMargin((int) TypedValue
@@ -164,7 +162,7 @@ public class ArticleDetailActivity extends ActionBarActivity
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mUpButtonContainer.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
                 @Override
                 public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
@@ -183,21 +181,22 @@ public class ArticleDetailActivity extends ActionBarActivity
                 mSelectedItemId = mStartId;
             }
         }
-
-        postponeEnterTransition();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            postponeEnterTransition();
 
         // setupWindowAnimations();
     }
-    private void setupWindowAnimations() {
+ /*   private void setupWindowAnimations() {
      /*   Fade fade = new Fade();
         fade.setDuration(1000);
         getWindow().setEnterTransition(fade);*/
 
-       Slide slide = new Slide();
-        slide.setDuration(1000);
+     //  Slide slide = new Slide();
+     //   slide.setDuration(1000);
        // getWindow().setReturnTransition(slide);
-        getWindow().setEnterTransition(slide);
-    }
+      //  getWindow().setEnterTransition(slide);
+  //  }*/
+
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return ArticleLoader.newAllArticlesInstance(this);
@@ -207,7 +206,6 @@ public class ArticleDetailActivity extends ActionBarActivity
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_CURRENT_PAGE_POSITION, mCurrentPosition);
     }
-
 
 
     @Override

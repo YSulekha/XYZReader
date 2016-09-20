@@ -11,7 +11,7 @@
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/src/main/res/values-land/macro_layout.xml -->
     <eat-comment/>
     <dimen name="detail_inner_horiz_margin">112dp</dimen>
-    <dimen name="detail_photo_height">224dp</dimen>
+    <dimen name="detail_photo_height">210dp</dimen>
     <!-- From: file:/Users/aharyadi/Documents/AndroidWS/Nanodegree/xyzreader/XYZReader/build/intermediates/exploded-aar/com.android.support/design/23.2.1/res/values-land/values-land.xml -->
     <eat-comment/>
     <style name="Widget.Design.TabLayout" parent="Base.Widget.Design.TabLayout">
