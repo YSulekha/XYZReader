@@ -1,7 +1,7 @@
-# Stock Hawk
+# XYZReader
 
-The Stock Hawk is an Android application for displaying the stock values from Yahoo finance API. 
- This project is part of Udacity Nanodegree course where the code was given and we had to productionize the app, taking it from a functional state to a production-ready state. This involved finding and handling error cases, adding accessibility features, allowing for localization, adding a widget, and adding a library.
+The XYZReader is a mock RSS feed reader android application featuring banner photos and shocking headlines! 
+ This project is part of Udacity Nanodegree course where the code was given and we had to take the user feedback in the UI Review node, and implement changes that will improve the UI and make it conform to Material Design.
 
 
 ##App Walkthrough   
