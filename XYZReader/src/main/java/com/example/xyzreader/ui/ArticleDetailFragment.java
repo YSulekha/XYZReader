@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
@@ -39,25 +37,21 @@ import com.example.xyzreader.data.ArticleLoader;
  */
 public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
+
     private static final String TAG = "ArticleDetailFragment";
-
     public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
-
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
     private int mMutedColor = 0xFF333333;
-    private ColorDrawable mStatusBarColorDrawable;
     private CollapsingToolbarLayout mCollapsing;
     private View mPhotoContainerView;
     private ImageView mPhotoView;
-    TextView mTitleView;
+    private TextView mTitleView;
     private int mScrollY;
     private boolean mIsCard = false;
-    String mTitle;
-    private int mStatusBarFullOpacityBottom;
-    private Bundle mbundle;
+    private String mTitle;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -107,11 +101,16 @@ public class ArticleDetailFragment extends Fragment implements
         mCollapsing = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsingbar);
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mTitleView = (TextView) mRootView.findViewById(R.id.article_title);
+
+        //Setting the transition name for shared element transition
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mPhotoView.setTransitionName(getString(R.string.anim_image) + mItemId);
             mTitleView.setTransitionName("Text Animation" + mItemId);
         }
+
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+
+        //Share the article when clicked on share button
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,9 +121,13 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
         bindViews();
+
+
+
         return mRootView;
     }
 
+    //Start the animation
     private void scheduleStartPostponedTransition(final View sharedElement) {
         sharedElement.getViewTreeObserver().addOnPreDrawListener(
                 new ViewTreeObserver.OnPreDrawListener() {
@@ -143,7 +146,6 @@ public class ArticleDetailFragment extends Fragment implements
         if (mRootView == null) {
             return;
         }
-
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
@@ -188,7 +190,8 @@ public class ArticleDetailFragment extends Fragment implements
                         }
                     });
 
-        } else {
+        }
+        else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A");
@@ -231,31 +234,9 @@ public class ArticleDetailFragment extends Fragment implements
         if (mPhotoContainerView == null || mPhotoView.getHeight() == 0) {
             return Integer.MAX_VALUE;
         }
-
         // account for parallax
         return mIsCard
                 ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
                 : mPhotoView.getHeight() - mScrollY;
-    }
-
-    /**
-     * Returns the shared element that should be transitioned back to the previous Activity,
-     * or null if the view is not visible on the screen.
-     */
-    @Nullable
-    ImageView getAlbumImage() {
-        if (isViewInBounds(getActivity().getWindow().getDecorView(), mPhotoView)) {
-            return mPhotoView;
-        }
-        return null;
-    }
-
-    /**
-     * Returns true if {@param view} is contained within {@param container}'s bounds.
-     */
-    private static boolean isViewInBounds(@NonNull View container, @NonNull View view) {
-        Rect containerBounds = new Rect();
-        container.getHitRect(containerBounds);
-        return view.getLocalVisibleRect(containerBounds);
     }
 }

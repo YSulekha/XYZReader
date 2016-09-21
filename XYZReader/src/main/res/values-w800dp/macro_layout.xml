@@ -4,7 +4,4 @@
     <dimen name="list_toolbar_side_margin">52dp</dimen> <!-- minus 64 - 12 -->
     <integer name="list_column_count">3</integer>
     <dimen name="detail_photo_height">600dp</dimen>
-
-    <!-- detail -->
-    <dimen name="detail_card_max_width">704dp</dimen>
 </resources>

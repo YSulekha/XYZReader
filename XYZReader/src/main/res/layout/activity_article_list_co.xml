@@ -24,6 +24,7 @@
             android:layout_height="@dimen/toolbar_size"
             android:contentDescription="@string/app_name"
             android:paddingLeft="@dimen/key_lines"
+            android:paddingStart="@dimen/key_lines"
             android:src="@drawable/logo" />
     </android.support.design.widget.AppBarLayout>
 
