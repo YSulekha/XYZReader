@@ -61,8 +61,12 @@ public class ArticleListActivity extends ActionBarActivity implements
         if (savedInstanceState == null) {
             refresh();
         }
+
+        //Welcome user using SnackBar when app is opened
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
-        Snackbar snackbar = Snackbar.make(coordinatorLayout,"Share this article with your friends",Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, getString(R.string.msg_snackbar), Snackbar.LENGTH_LONG);
+        snackbar.getView().setBackgroundColor(getResources().getColor(R.color.theme_primary));
+        snackbar.getView().setContentDescription(getString(R.string.msg_snackbar));
         snackbar.show();
     }
 

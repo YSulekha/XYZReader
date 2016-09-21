@@ -6,4 +6,4 @@ The XYZReader is a mock RSS feed reader android application featuring banner pho
 
 ##App Walkthrough   
    
- <img src='https://github.com/YSulekha/StockHawk/blob/master/StockHawk.gif' title='App Walkthrough' width='' alt='App Walkthrough' />
+ <img src='https://github.com/YSulekha/XYZReader/blob/master/XYZReader.gif' title='App Walkthrough' width='' alt='App Walkthrough' />
